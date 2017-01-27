@@ -133,3 +133,12 @@ open class UPCarouselFlowLayout: UICollectionViewFlowLayout {
     }
 }
 
+extension UICollectionView {
+    
+    /// Convenience variable to get the carousel flow layout.
+    /// This returns nil if the UICollectionView layout is not a subclass of UPCarouselFlowLayout
+    public var carouselFlowLayout: UPCarouselFlowLayout? {
+        return self.collectionViewLayout as? UPCarouselFlowLayout
+    }
+}
+
