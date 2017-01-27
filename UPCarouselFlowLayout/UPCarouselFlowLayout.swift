@@ -29,6 +29,10 @@ open class UPCarouselFlowLayout: UICollectionViewFlowLayout {
     @IBInspectable open var sideItemAlpha: CGFloat = 0.6
     open var spacingMode = UPCarouselFlowLayoutSpacingMode.fixed(spacing: 40)
     
+    /// Determines if layout invalidation is allowed for a bounds change
+    /// This can be useful when a landscape only viewController is presented over the UICollectionView, causing it to layout
+    open var allowLayoutInvalidation: Bool = true
+    
     fileprivate var state = LayoutState(size: CGSize.zero, direction: .horizontal)
     
     
@@ -74,7 +78,7 @@ open class UPCarouselFlowLayout: UICollectionViewFlowLayout {
     }
     
     override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        return true
+        return self.allowLayoutInvalidation
     }
     
     override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
